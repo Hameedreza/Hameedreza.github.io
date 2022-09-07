@@ -41,63 +41,82 @@ body{
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  font-family: 'Bebas Neue', cursive;
+  font-family: 'Anton', sans-serif; 
 }
+
+.wrapper{
+  position: relative;
+}
+
+.wrapper::before{
+  position: absolute;
+	top: 0;
+	left: -75%;
+	z-index: 2;
+	display: block;
+	content: '';
+	width: 50%;
+	height: 100%;
+	background: linear-gradient(to right, rgba(255,255,255,0) 0%, rgba(255,255,255,.3) 100%);
+  background: -webkit-linear-gradient(left, rgba(255,255,255,0) 0%, rgba(255,255,255,.3) 100%);
+	transform: skewX(-25deg);
+  -webkit-transform: skewX(-25deg);
+}
+
+@keyframes shine {
+	100% {
+		left: 125%;
+	}
+}
+.wrapper:hover::before{
+	animation: shine .75s;  
+}
+
 
 .avatar{
   width: 15rem;
-  border: .2rem solid #FA6122;
+  border: .2rem solid  rgb(251,233,213);
   border-radius: 50%;
-  filter: grayScale(100%);
+  /* filter: grayScale(100%); */
   transition: all .5s ease;
   cursor: pointer;
-}
-
-.avatar:hover{
-  filter: grayscale(0);
-  /* transform: translateY(-.5rem);
-  width: 15.5rem; */
+  box-shadow: -2px 4px 7px 5px rgba(0,0,0,0.32);
 }
 
 .title{
-  margin-top: .5rem;
+  margin-top: 1rem;
   margin-bottom: .5rem;
-  transition: all .5s ease;
   position: relative;
-  font-size: 3rem;
+  font-size: 2.5rem;
   text-align: center;
   cursor: pointer;
+  letter-spacing: .2rem;
+  color: rgb(255,255,255);  
+  text-shadow: 0px 0px 8.896px rgb(251,233,213), 0 2px 3px #000;
+  line-height: 3rem;
 }
-
-/* .title::before{
-  content: '';
-  width: 0;
-  height: 2px;
-  background-color: rgba(223,193,159,0.5);
-  position:absolute;
-  bottom: 0;
-  transition: all .6s ease;
+/* rgba(251,233,213,0.5) */
+/* .avatar:hover ~ .title{
+  letter-spacing: .15rem;
 } */
 
-.avatar:hover ~ .title{
-  letter-spacing: .15rem;
-}
-
 .title span{
-  transition: color .5s ease;
-}
-
-.avatar:hover ~ .title span{
   color:#FA6122;
+  text-shadow: 0px 0px 8.896px rgb(251,233,213), 0 2px 3px #000;
+
 }
 
-.title:hover .title>span{
+/* .wrapper .avatar:hover ~ .title span{
   color:#FA6122;
-}
+} */
 
-.avatar:hover ~ .title:not(span){
+/* .wrapper .title:hover .title>span{
+  color:#FA6122;
+} */
+
+/* .wrapper .avatar:hover ~ .title:not(span){
   color: rgb(20, 63, 107);
-}
+} */
 
 /* .avatar:hover ~ .title::before{
   width: 14rem;
