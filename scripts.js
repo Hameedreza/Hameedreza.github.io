@@ -1,7 +1,13 @@
 let clicked = false;
+let hButton = false;
 let list = ['.first','.secend','third'];
 const line = document.querySelectorAll('.line');
-console.log(list);
+const button = document.querySelector('.button');
+const hOne = document.querySelector('.one');
+const hTwo = document.querySelector('.two');
+const navCol = document.querySelector('.nav-collapse');
+
+
 line[0].addEventListener('click',(e)=>{
   let partOne = document.querySelector('.first');
   openAndClose(line[0],partOne);
@@ -13,6 +19,10 @@ line[1].addEventListener('click',(e)=>{
 line[2].addEventListener('click',(e)=>{
   let partThree = document.querySelector('.third');
   openAndClose(line[2],partThree);
+})
+line[3].addEventListener('click',(e)=>{
+  let partThree = document.querySelector('.fourth');
+  openAndClose(line[3],partThree);
 })
 
 const openAndClose = (line, part)=>{
@@ -33,10 +43,22 @@ const openAndClose = (line, part)=>{
   console.log(clicked);
 }
 
-// for(let i = 0; i < line.length; i++){
-//   let part = document.querySelector(list[i]);
-//   line[i].addEventListener('click',()=>{
-//     openAndClose(line[i],part);
-//   })
-//   console.log(part);
-// }
+button.addEventListener('click', ()=>{
+  if(!hButton){
+    hOne.style.transform =  'rotate(45deg) translate(6px,8px)';
+    hOne.style.transition = 'all .4s ease';
+    hTwo.style.transform = 'rotate(-45deg) translate(4px,-7px)';   
+    hTwo.style.transition = 'all .4s ease';
+    button.style.boxShadow = '5px 10px #000;'
+    navCol.style.left = '0'
+    hButton = true;
+  }else{
+    hOne.style.transform =  'none';
+    hOne.style.transition = 'all .4s ease';
+    hTwo.style.transform = 'none';    
+    hTwo.style.transition = 'all .4s ease';
+    navCol.style.left = '-80rem'
+    hButton = false;
+  }
+
+})
